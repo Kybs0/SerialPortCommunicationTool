@@ -1,0 +1,38 @@
+﻿<Window x:Class="SerialPortCommunicationTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SerialPortCommunicationTool"
+        mc:Ignorable="d"
+        Title="串口通信工具" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="串口通信参数" HorizontalAlignment="Center" FontSize="18" Margin="0 20"/>
+                <StackPanel Orientation="Horizontal" Margin="10,20">
+                    <TextBlock Text="发送端："/>
+                    <ComboBox x:Name="SendPortListComboBox" Width="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,20">
+                    <TextBlock Text="发送端："/>
+                    <ComboBox x:Name="ReceivePortListComboBox" Width="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,20">
+                    <TextBlock Text="波特位："/>
+                    <ComboBox x:Name="PotterBitListComboBox" Width="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,20">
+                    <TextBlock Text="数据位："/>
+                    <ComboBox x:Name="DataBitsListComboBox" Width="120"/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="PortConnectionButton" Content="关闭串口通信" VerticalAlignment="Bottom" Width="100" Background="Transparent" 
+                    Margin="0 0 0 20" Click="PortConnectionButton_OnClick"/>
+        </Grid>
+    </Grid>
+</Window>
