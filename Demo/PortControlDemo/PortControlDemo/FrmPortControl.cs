@@ -82,7 +82,6 @@ namespace PortControlDemo
             pchSend.SendData(textWork16(tb_send.Text));
         }
 
-
         private byte[] textWork16(string strText)
         {
             strText = strText.Replace(" ", "");

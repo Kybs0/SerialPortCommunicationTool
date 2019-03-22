@@ -5,34 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SerialPortCommunicationTool"
         mc:Ignorable="d"
-        Title="串口通信工具" Height="450" Width="800">
-    <Grid>
+        Title="串口通信调试工具" Height="450" Width="800">
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Center">
                 <TextBlock Text="串口通信参数" HorizontalAlignment="Center" FontSize="18" Margin="0 20"/>
-                <StackPanel Orientation="Horizontal" Margin="10,20">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="发送端："/>
                     <ComboBox x:Name="SendPortListComboBox" Width="120"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,20">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="发送端："/>
                     <ComboBox x:Name="ReceivePortListComboBox" Width="120"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,20">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="波特位："/>
                     <ComboBox x:Name="PotterBitListComboBox" Width="120"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,20">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="数据位："/>
                     <ComboBox x:Name="DataBitsListComboBox" Width="120"/>
                 </StackPanel>
+                <Button x:Name="PortConnectionButton" Content="关闭串口通信" VerticalAlignment="Bottom" Width="100" Background="Transparent" 
+                        Click="PortConnectionButton_OnClick" Margin="0,10"/>
             </StackPanel>
-            <Button x:Name="PortConnectionButton" Content="关闭串口通信" VerticalAlignment="Bottom" Width="100" Background="Transparent" 
-                    Margin="0 0 0 20" Click="PortConnectionButton_OnClick"/>
+        </Grid>
+        <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="1 0 0 0" Margin="10,0"/>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="发送管理" FontWeight="Bold" FontSize="18"/>
+                <TextBox x:Name="SendTextBox" Grid.Row="1" Margin="0 10"></TextBox>
+                <Button x:Name="SendDataButton" Content="发送数据" Grid.Row="2" 
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Height="25" Background="Transparent"
+                        Click="SendDataButton_OnClick"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="发送管理" FontWeight="Bold" FontSize="18"/>
+                <TextBox x:Name="ReceiveTextBox" Grid.Row="1" Margin="0 10"></TextBox>
+                <Button x:Name="ReceiveDataButton" Content="接收数据" Grid.Row="2" 
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Height="25" Background="Transparent"
+                        Click="ReceiveDataButton_OnClick"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

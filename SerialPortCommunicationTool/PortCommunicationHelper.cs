@@ -20,9 +20,7 @@ namespace SerialPortCommunicationTool
         /// <summary>
         /// 串口接收数据委托
         /// </summary>
-        public delegate void ComReceiveDataHandler(string data);
-
-        public ComReceiveDataHandler OnComReceiveDataHandler = null;
+        public event EventHandler<string> ComDataReceived;
 
         /// <summary>
         /// 端口名称数组
@@ -62,12 +60,12 @@ namespace SerialPortCommunicationTool
         {
             try
             {
+                _serialPort.Close();
                 _serialPort.PortName = portName;
                 _serialPort.BaudRate = boudRate;
                 _serialPort.DataBits = dataBit;
                 _serialPort.StopBits = (StopBits)stopBit;
                 _serialPort.ReadTimeout = timeout;
-                _serialPort.Close();
                 _serialPort.Open();
                 PortState = true;
             }
@@ -136,10 +134,7 @@ namespace SerialPortCommunicationTool
             byte[] buffer = new byte[_serialPort.BytesToRead];
             _serialPort.Read(buffer, 0, buffer.Length);
             string str = EncodingType.GetString(buffer);
-            if (OnComReceiveDataHandler != null)
-            {
-                OnComReceiveDataHandler(str);
-            }
+            ComDataReceived?.Invoke(this, str);
         }
 
         #endregion
